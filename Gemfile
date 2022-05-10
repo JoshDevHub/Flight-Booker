@@ -67,10 +67,10 @@ group :development do
   # gem "spring"
 end
 
-
 group :development, :test do
-  gem "rubocop"
-  gem "rubocop-rails", require: false
   gem "factory_bot_rails"
   gem "faker"
+  gem "rspec-rails"
+  gem "rubocop"
+  gem "rubocop-rails", require: false
 end
