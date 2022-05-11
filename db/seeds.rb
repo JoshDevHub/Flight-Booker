@@ -1,11 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require "faker"
+
 Airport.destroy_all
+Flight.destroy_all
 
 Airport.create!(
   [
@@ -26,3 +22,18 @@ Airport.create!(
     }
   ]
 )
+
+def random_airports
+  (1..5).to_a.shuffle.take(2)
+end
+
+(1..10).each do |id|
+  arrival_id, depart_id = random_airports
+  Flight.create!(
+    id: id,
+    flight_duration: rand(3600..18_000),
+    departure_time: Faker::Time.forward(days: 30, period: :day),
+    arrival_airport_id: arrival_id,
+    departure_airport_id: depart_id
+  )
+end
