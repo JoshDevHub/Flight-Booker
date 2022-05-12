@@ -1,8 +1,36 @@
 <h1 class="text-xl">Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
 
-<ul>
-  <% @flights.each do |flight| %>
-    <li><%= flight %></li>
-  <% end %>
-</ul>
+<form action="">
+  <select name="departure_airport">
+    <% @airports.each do |airport| %>
+      <option value="<%= airport.id %>">
+        <%= airport.airport_code %>
+      </option>
+    <% end %>
+  </select>
+
+  <select name="arrival_airport">
+    <% @airports.each do |airport| %>
+      <option value="<%= airport.id %>">
+        <%= airport.airport_code %>
+      </option>
+    <% end %>
+  </select>
+
+  <select name="passengers">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+
+  <button class="px-8 border-2 border-black">Search Flights</button>
+</form>
+
+<% if @flights.any? %>
+  <ul>
+    <% @flights.each do |flight| %>
+      <li><%= flight %></li>
+    <% end %>
+  </ul>
+<% end %>
