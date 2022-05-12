@@ -12,6 +12,11 @@
   </div>
 
   <div>
+    <%= form.label :date %>
+    <%= select_date(Time.current, start_year: 2022, end_year: 2023) %>
+  </div>
+
+  <div>
     <%= form.label :passengers, "Number of passengers:" %>
     <%= form.select :passengers, (1..4) %>
   </div>
