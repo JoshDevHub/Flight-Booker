@@ -1,31 +1,25 @@
 <h1 class="text-xl">Flights#index</h1>
 
-<form action="">
-  <select name="departure_airport">
-    <% @airports.each do |airport| %>
-      <option value="<%= airport.id %>">
-        <%= airport.airport_code %>
-      </option>
-    <% end %>
-  </select>
+<%= form_with url: "/", method: :get do |form| %>
+  <div>
+    <%= form.label :departure_airport %>
+    <%= form.select(:departure_airport, @airport_codes) %>
+  </div>
 
-  <select name="arrival_airport">
-    <% @airports.each do |airport| %>
-      <option value="<%= airport.id %>">
-        <%= airport.airport_code %>
-      </option>
-    <% end %>
-  </select>
+  <div>
+    <%= form.label :arrival_airport %>
+    <%= form.select(:arrival_airport, @airport_codes) %>
+  </div>
 
-  <select name="passengers">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
+  <div>
+    <%= form.label :passengers, "Number of passengers:" %>
+    <%= form.select :passengers, (1..4) %>
+  </div>
 
-  <button class="px-8 border-2 border-black">Search Flights</button>
-</form>
+  <%= form.submit "Search",
+                  class: "px-8 border-2 border-black" %>
+
+<% end %>
 
 <% if @flights.any? %>
   <ul>
