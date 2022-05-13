@@ -1,35 +1,6 @@
 <h1 class="text-xl">Flights#index</h1>
 
-<%= form_with url: root_path, method: :get do |form| %>
-  <div>
-    <%= form.label :departure_airport %>
-    <%= form.select(:departure_airport, @airport_codes) %>
-  </div>
-
-  <div>
-    <%= form.label :arrival_airport %>
-    <%= form.select(:arrival_airport, @airport_codes) %>
-  </div>
-
-  <div>
-    <%= form.label :departure_date %>
-    <%= select_tag "departure_time",
-                   options_from_collection_for_select(
-                     @flight_dates,
-                     "departure_time",
-                     :departure_date_formatted
-                    ) %>
-  </div>
-
-  <div>
-    <%= form.label :passengers, "Number of passengers:" %>
-    <%= form.select :passengers, (1..4) %>
-  </div>
-
-  <%= form.submit "Search",
-                  class: "px-8 border-2 border-black" %>
-
-<% end %>
+<%= render "search_form", airport_codes: @airport_codes, flight_dates: @flight_dates %>
 
 <% if @flights.any? %>
   <ul>
