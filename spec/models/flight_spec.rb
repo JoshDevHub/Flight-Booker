@@ -68,4 +68,23 @@ RSpec.describe Flight, type: :model do
       end
     end
   end
+
+  describe "#format_duration" do
+    context "when the flight is 4 hours long" do
+      subject(:flight_4h) { create(:flight, :four_hours_long) }
+      it "formats the time to 4:00" do
+        formatted_time = flight_4h.format_duration
+        expect(formatted_time).to eq("4:00")
+      end
+    end
+
+    context "when the flight is 2 hours and 11 minutes long" do
+      subject(:flight_2h11m) { create(:flight, :two_hours_eleven_min) }
+      it "formats the time to 2:11" do
+        expected_format = "2:11"
+        formatted_time = flight_2h11m.format_duration
+        expect(formatted_time).to eq(expected_format)
+      end
+    end
+  end
 end

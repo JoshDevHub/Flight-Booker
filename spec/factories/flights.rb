@@ -20,5 +20,13 @@ FactoryBot.define do
     trait :departing_oct52023 do
       departure_time { "Thu, 05 Oct 2023 00:00:00.000000000 UTC +00:00" }
     end
+
+    trait :four_hours_long do
+      flight_duration { 14_400 }
+    end
+
+    trait :two_hours_eleven_min do
+      flight_duration { 7860 }
+    end
   end
 end
