@@ -12,5 +12,13 @@ FactoryBot.define do
     trait :departing_atlanta do
       departure_airport { create(:airport, :atlanta) }
     end
+
+    trait :departing_may132022 do
+      departure_time { "Fri, 13 May 2022 00:00:00.000000000 UTC +00:00" }
+    end
+
+    trait :departing_oct52023 do
+      departure_time { "Thu, 05 Oct 2023 00:00:00.000000000 UTC +00:00" }
+    end
   end
 end

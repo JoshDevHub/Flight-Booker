@@ -9,4 +9,8 @@ class Flight < ApplicationRecord
   def self.departing_from(code)
     joins(:departure_airport).where("departure_airport.airport_code" => code)
   end
+
+  def departure_date_formatted
+    departure_time.strftime("%m/%d/%Y")
+  end
 end

@@ -48,4 +48,24 @@ RSpec.describe Flight, type: :model do
       end
     end
   end
+
+  describe "#departure_date_formatted" do
+    context "when the departure date is May 13, 2022" do
+      subject(:may13_flight) { create(:flight, :departing_may132022) }
+
+      it "formats the time to %m/%d/%Y" do
+        formatted_date = may13_flight.departure_date_formatted
+        expect(formatted_date).to eq("05/13/2022")
+      end
+    end
+
+    context "when the departure date is October 5, 2023" do
+      subject(:oct5_flight) { create(:flight, :departing_oct52023) }
+
+      it "formats the time to %m/%d/%Y" do
+        formatted_date = oct5_flight.departure_date_formatted
+        expect(formatted_date).to eq("10/05/2023")
+      end
+    end
+  end
 end
