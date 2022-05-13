@@ -5,4 +5,8 @@ class Flight < ApplicationRecord
   def self.arriving_at(code)
     joins(:arrival_airport).where("arrival_airport.airport_code" => code)
   end
+
+  def self.departing_from(code)
+    joins(:departure_airport).where("departure_airport.airport_code" => code)
+  end
 end
