@@ -1,6 +1,6 @@
 <h1 class="text-xl">Flights#index</h1>
 
-<%= form_with url: "/", method: :get do |form| %>
+<%= form_with url: root_path, method: :get do |form| %>
   <div>
     <%= form.label :departure_airport %>
     <%= form.select(:departure_airport, @airport_codes) %>
@@ -12,8 +12,13 @@
   </div>
 
   <div>
-    <%= form.label :date %>
-    <%= select_date(Time.current, start_year: 2022, end_year: 2023) %>
+    <%= form.label :departure_date %>
+    <%= select_tag "departure_time",
+                   options_from_collection_for_select(
+                     @flight_dates,
+                     "departure_time",
+                     :departure_date_formatted
+                    ) %>
   </div>
 
   <div>
