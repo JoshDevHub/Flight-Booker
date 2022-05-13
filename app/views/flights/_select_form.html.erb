@@ -1,0 +1,14 @@
+<h2 class="text-xl font-bold">Flights:</h2>
+
+<%= form_with url: "/booking/new", method: :get do |form| %>
+  <%= form.hidden_field passengers: passengers  %>
+  <% flights.each do |flight| %>
+    <%= form.radio_button :flight, "#{flight.id}" %>
+    <%= form.label :flight_id, "#{flight.display_flight}" %>
+  <% end %>
+
+  <div>
+    <%= form.submit "Book Flight",
+                    class: "px-8 border-2 border-black" %>
+  </div>
+<% end %>

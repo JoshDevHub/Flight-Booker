@@ -1,11 +1,7 @@
-<h1 class="text-xl">Flights#index</h1>
+<h1 class="text-3xl">Find Flights</h1>
 
 <%= render "search_form", airport_codes: @airport_codes, flight_dates: @flight_dates %>
 
 <% if @flights.any? %>
-  <ul>
-    <% @flights.each do |flight| %>
-      <li><%= flight %></li>
-    <% end %>
-  </ul>
+  <%= render "select_form", flights: @flights, passengers: @passengers %>
 <% end %>
