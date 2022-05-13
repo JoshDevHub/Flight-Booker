@@ -1,14 +1,28 @@
 <h2 class="text-xl font-bold">Flights:</h2>
 
-<%= form_with url: "/booking/new", method: :get do |form| %>
+<%= form_with url: "/booking/new", method: :get, html: { id: "flight_form" } do |form| %>
   <%= form.hidden_field passengers: passengers  %>
-  <% flights.each do |flight| %>
-    <%= form.radio_button :flight, "#{flight.id}" %>
-    <%= form.label :flight_id, "#{flight.display_flight}" %>
-  <% end %>
-
-  <div>
-    <%= form.submit "Book Flight",
-                    class: "px-8 border-2 border-black" %>
-  </div>
 <% end %>
+
+<table>
+  <tr>
+    <td>Select Flight</td>
+    <td>Arrive At</td>
+    <td>Depart From</td>
+    <td>Flight Duration</td>
+  </tr>
+  <% flights.each do |flight| %>
+    <tr>
+      <td><%= radio_button("flight", "id", "#{flight.id}", form: "flight_form") %></td>
+      <td><%= flight.arrival_airport.airport_code %></td>
+      <td><%= flight.departure_airport.airport_code %></td>
+      <td><%= flight.format_duration %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div>
+  <%= submit_tag "Book this flight",
+                 form: "flight_form",
+                 class: "px-8 border-2 border-black" %>
+</div>
