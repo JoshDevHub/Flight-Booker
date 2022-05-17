@@ -1,0 +1,28 @@
+<h1>Book Your Flight</h1>
+
+<h2>Flight Information</h2>
+<%= @flight.departure_airport.airport_code %>
+<%= @flight.arrival_airport.airport_code %>
+<%= @flight.format_duration %>
+<%= @flight.departure_date_formatted %>
+
+<%= form_with model: @booking do |form| %>
+  <%= form.hidden_field :flight_id, value: @flight.id %>
+  <%= form.fields_for :passengers do |sub_form| %>
+    <div>
+      <%= sub_form.label :first_name %>
+      <%= sub_form.text_field :first_name, class: "border-2 border-black" %>
+    </div>
+    <div>
+      <%= sub_form.label :last_name %>
+      <%= sub_form.text_field :last_name, class: "border-2 border-black" %>
+    </div>
+    <div>
+      <%= sub_form.label :email %>
+      <%= sub_form.email_field :email, class: "border-2 border-black" %>
+    </div>
+  <% end %>
+  <div>
+    <%= form.submit class: "px-8 border-2 border-black" %>
+  </div>
+<% end %>
