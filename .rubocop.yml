@@ -1,4 +1,6 @@
 ---
+require: rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 3.0.3
   NewCops: enable
