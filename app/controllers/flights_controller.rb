@@ -6,6 +6,6 @@ class FlightsController < ApplicationController
     @passengers = params[:passengers]
     @flights = Flight.departing_from(params[:departure_airport])
                      .arriving_at(params[:arrival_airport])
-                     .where("departure_time = ?", params[:departure_time])
+                     .where(departure_time: params[:departure_time])
   end
 end
