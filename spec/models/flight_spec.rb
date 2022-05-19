@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Flight, type: :model do
   describe "self::arriving_at" do
-    context "when the flight is arriving in San Francisco" do
+    context "when a flight is arriving in San Francisco" do
       let(:flight_arriving_san_francisco) do
         create(:flight, :arriving_san_francisco)
       end
@@ -10,7 +10,7 @@ RSpec.describe Flight, type: :model do
       context "when the given code is San Francisco's airport code" do
         it "returns the Flights arriving at San Francisco" do
           san_francisco_code = "SFO"
-          relation_obj = Flight.arriving_at(san_francisco_code)
+          relation_obj = described_class.arriving_at(san_francisco_code)
           expect(relation_obj).to include(flight_arriving_san_francisco)
         end
       end
@@ -18,8 +18,8 @@ RSpec.describe Flight, type: :model do
       context "when the given code is not San Francisco's airport code" do
         it "returns the Flights not including one landing in San Francisco" do
           denver_code = "DEN"
-          relation_obj = Flight.arriving_at(denver_code)
-          expect(relation_obj).to_not include(flight_arriving_san_francisco)
+          relation_obj = described_class.arriving_at(denver_code)
+          expect(relation_obj).not_to include(flight_arriving_san_francisco)
         end
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe Flight, type: :model do
       context "when the given code is Atlanta's airport code" do
         it "returns the Flight departing from Atlanta" do
           atlanta_code = "ATL"
-          relation_obj = Flight.departing_from(atlanta_code)
+          relation_obj = described_class.departing_from(atlanta_code)
           expect(relation_obj).to include(flight_departing_atlanta)
         end
       end
@@ -42,8 +42,8 @@ RSpec.describe Flight, type: :model do
       context "when the given code is not Atlanta's airport code" do
         it "returns the flights not including the flight departing Atlanta" do
           denver_code = "DEN"
-          relation_obj = Flight.departing_from(denver_code)
-          expect(relation_obj).to_not include(flight_departing_atlanta)
+          relation_obj = described_class.departing_from(denver_code)
+          expect(relation_obj).not_to include(flight_departing_atlanta)
         end
       end
     end
@@ -72,6 +72,7 @@ RSpec.describe Flight, type: :model do
   describe "#format_duration" do
     context "when the flight is 4 hours long" do
       subject(:flight_4h) { create(:flight, :four_hours_long) }
+
       it "formats the time to 4:00" do
         formatted_time = flight_4h.format_duration
         expect(formatted_time).to eq("4:00")
@@ -80,6 +81,7 @@ RSpec.describe Flight, type: :model do
 
     context "when the flight is 2 hours and 11 minutes long" do
       subject(:flight_2h11m) { create(:flight, :two_hours_eleven_min) }
+
       it "formats the time to 2:11" do
         expected_format = "2:11"
         formatted_time = flight_2h11m.format_duration
