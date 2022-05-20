@@ -1,4 +1,4 @@
-<%= form_with url: root_path, method: :get do |form| %>
+<%= form_with url: root_path, method: :get, html: { class: styles } do |form| %>
   <div class="mb-6">
     <%= form.label :departure_airport, class: "hidden" %>
     <%= form.select :departure_airport,
