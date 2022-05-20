@@ -1,30 +1,36 @@
 <%= form_with url: root_path, method: :get do |form| %>
-  <div>
-    <%= form.label :departure_airport %>
-    <%= form.select(:departure_airport, airport_codes) %>
-  </div>
+  <div class="mb-6">
+    <%= form.label :departure_airport, class: "hidden" %>
+    <%= form.select :departure_airport,
+                    airport_codes,
+                    { prompt: "Select departure airport" },
+                    { class: "p-2 border border-transparent focus:border-black" } %>
 
-  <div>
-    <%= form.label :arrival_airport %>
-    <%= form.select(:arrival_airport, airport_codes) %>
-  </div>
+    <%= form.label :arrival_airport, class: "hidden" %>
+    <%= form.select :arrival_airport,
+                    airport_codes,
+                    { prompt: "Select destination" },
+                    { class: "p-2 border border-transparent focus:border-black" } %>
 
-  <div>
-    <%= form.label :departure_date %>
+    <%= form.label :departure_date, class: "hidden" %>
     <%= select_tag "departure_time",
                    options_from_collection_for_select(
                      flight_dates,
                      "departure_time",
                      :departure_date_formatted
-                    ) %>
+                    ),
+                    prompt: "Select date",
+                    class: "p-2 border border-transparent focus:border-black" %>
+
+    <%= form.label :passengers, "Number of passengers:", class: "hidden" %>
+    <%= form.select :passengers,
+                    (1..4),
+                    { prompt: "Number of passengers" },
+                    { class: "p-2 border border-transparent focus:border-black" } %>
   </div>
 
-  <div>
-    <%= form.label :passengers, "Number of passengers:" %>
-    <%= form.select :passengers, (1..4) %>
+  <div class="flex justify-center">
+    <%= form.submit "Search",
+                    class: "btn-primary" %>
   </div>
-
-  <%= form.submit "Search",
-                  class: "btn-primary" %>
-
 <% end %>
