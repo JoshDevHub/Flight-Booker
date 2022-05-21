@@ -24,9 +24,11 @@
                     class: "text-white text-2xl hover:bg-sky-800 p-4" %>
       </nav>
     </header>
-    <main class="flex-1">
+
+    <main class="flex flex-1 flex-col items-center">
       <%= yield %>
     </main>
+
     <footer class="bg-sky-600 border-t-2 border-sky-800 flex justify-center">
       <%= link_to "Github",
                   "https://www.github.com/JoshDevHub/Flight-Booker",

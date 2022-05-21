@@ -1,5 +1,5 @@
 <%= form_with url: root_path, method: :get, html: { class: styles } do |form| %>
-  <div class="mb-6">
+  <div class="mb-6 flex gap-1 flex-col md:flex-row">
     <%= form.label :departure_airport, class: "hidden" %>
     <%= form.select :departure_airport,
                     airport_codes,
@@ -24,7 +24,7 @@
 
     <%= form.label :passengers, "Number of passengers:", class: "hidden" %>
     <%= form.select :passengers,
-                    (1..4),
+                    (1..4).map { [ "#{_1} passengers", _1 ]},
                     { prompt: "Number of passengers" },
                     { class: "p-2 border border-transparent focus:border-black" } %>
   </div>

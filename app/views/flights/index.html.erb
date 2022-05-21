@@ -1,12 +1,10 @@
-<main class="flex flex-col items-center">
-  <h1 class="text-3xl mb-4 mt-4">Search Flights</h1>
+<h1 class="text-3xl mb-4 mt-4 font-bold">Search Flights</h1>
 
-  <%= render "search_form",
-             airport_codes: @airport_codes,
-             flight_dates: @flight_dates,
-             styles: "mb-8" %>
+<%= render "search_form",
+            airport_codes: @airport_codes,
+            flight_dates: @flight_dates,
+            styles: "mb-8" %>
 
-  <% if @flights.any? %>
-    <%= render "select_form", flights: @flights, passengers: @passengers %>
-  <% end %>
-</main>
+<% if @flights.any? %>
+  <%= render "select_form", flights: @flights, passengers: @passengers %>
+<% end %>
