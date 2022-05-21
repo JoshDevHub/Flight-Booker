@@ -1,35 +1,39 @@
-<h2 class="text-xl font-bold">Flights:</h2>
+<h2 class="text-xl font-bold mb-4">Matching Flights:</h2>
 
 <%= form_with url: new_booking_path,
               method: :get,
               html: { id: "flight_form" } do |form| %>
 <% end %>
 
-<table>
-  <tr>
-    <td>Select Flight</td>
-    <td>Arrive At</td>
-    <td>Depart From</td>
-    <td>Flight Duration</td>
-  </tr>
-  <% flights.each do |flight| %>
+<table class="border border-black mb-4">
+  <thead>
     <tr>
-      <td>
-        <%= radio_button("booking", "flight_id", "#{flight.id}", form: "flight_form") %>
-        <%= hidden_field(:booking,
-                         :passenger_number,
-                         value: passengers,
-                         form: "flight_form") %>
-      </td>
-      <td><%= flight.arrival_airport.airport_code %></td>
-      <td><%= flight.departure_airport.airport_code %></td>
-      <td><%= flight.format_duration %></td>
+      <th scope="col" class="p-2 border border-black text-sky-800">Select Flight</td>
+      <th scope="col" class="p-2 border border-black text-sky-800">Departs From</td>
+      <th scope="col" class="p-2 border border-black text-sky-800">Arrives At</td>
+      <th scope="col" class="p-2 border border-black text-sky-800">Flight Duration</td>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% flights.each do |flight| %>
+      <tr class="text-center">
+        <td class="border border-black">
+          <%= radio_button("booking", "flight_id", "#{flight.id}", form: "flight_form") %>
+          <%= hidden_field(:booking,
+                           :passenger_number,
+                           value: passengers,
+                           form: "flight_form") %>
+        </td>
+        <td class="border border-black"><%= flight.departure_airport.airport_code %></td>
+        <td class="border border-black"><%= flight.arrival_airport.airport_code %></td>
+        <td class="border border-black"><%= flight.format_duration %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <div>
   <%= submit_tag "Book this flight",
                  form: "flight_form",
-                 class: "px-8 border-2 border-black" %>
+                 class: "btn-primary" %>
 </div>
