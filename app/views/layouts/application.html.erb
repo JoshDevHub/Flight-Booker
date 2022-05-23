@@ -18,10 +18,16 @@
         </span>
         <%= link_to "Search Flights",
                     root_path,
-                    class: "text-white text-2xl hover:bg-sky-800 p-4" %>
+                    class: "text-white text-2xl p-4 hover:bg-sky-800
+                            transition-all duration-200
+                            after:block after:w-0 after:h-0.5 after:bg-white
+                            after:transition-all hover:after:w-full" %>
         <%= link_to "Find Booking",
                     "bookings/search",
-                    class: "text-white text-2xl hover:bg-sky-800 p-4" %>
+                    class: "text-white text-2xl p-4 hover:bg-sky-800
+                            transition-all duration-200
+                            after:block after:w-0 after:h-0.5 after:bg-white
+                            after:transition-all hover:after:w-full" %>
       </nav>
     </header>
 
