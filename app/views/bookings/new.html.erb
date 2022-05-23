@@ -21,23 +21,37 @@
   </tbody>
 </table>
 
-<%= form_with model: @booking do |form| %>
+<%= form_with model: @booking,
+              html: { class: "flex flex-col items-center" } do |form| %>
   <%= form.hidden_field :flight_id, value: @flight.id %>
-  <%= form.fields_for :passengers do |sub_form| %>
-    <div>
-      <%= sub_form.label :first_name %>
-      <%= sub_form.text_field :first_name, class: "border-2 border-black" %>
-    </div>
-    <div>
-      <%= sub_form.label :last_name %>
-      <%= sub_form.text_field :last_name, class: "border-2 border-black" %>
-    </div>
-    <div>
-      <%= sub_form.label :email %>
-      <%= sub_form.email_field :email, class: "border-2 border-black" %>
-    </div>
-  <% end %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+    <%= form.fields_for :passengers do |sub_form| %>
+      <div class="flex flex-col gap-2">
+        <h3 class="font-bold text-center">
+          <%= "#{(sub_form.index + 1).ordinalize} Passenger" %>
+        </h3>
+        <div class="flex flex-col">
+          <%= sub_form.label :first_name,
+                             class: "text-sky-800 uppercase tracking-wider text-sm" %>
+          <%= sub_form.text_field :first_name,
+                                  class: "border-2 border-black p-1" %>
+        </div>
+        <div class="flex flex-col">
+          <%= sub_form.label :last_name,
+                             class: "text-sky-800 uppercase tracking-wider text-sm" %>
+          <%= sub_form.text_field :last_name,
+                                  class: "border-2 border-black p-1" %>
+        </div>
+        <div class="flex flex-col mb-4">
+          <%= sub_form.label :email,
+                             class: "text-sky-800 uppercase tracking-wider text-sm" %>
+          <%= sub_form.email_field :email,
+                                   class: "border-2 border-black p-1" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <div>
-    <%= form.submit class: "btn-primary" %>
+    <%= form.submit class: "btn-primary mb-10 mt-2" %>
   </div>
 <% end %>
