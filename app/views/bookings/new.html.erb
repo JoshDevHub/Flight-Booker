@@ -2,23 +2,6 @@
 
 <h2 class="text-xl mb-2 font-bold">Flight Information</h2>
 
-<table class="border border-black mb-4">
-  <thead>
-    <tr>
-      <th scope="col" class="p-2 border border-black text-sky-800">Departs From</td>
-      <th scope="col" class="p-2 border border-black text-sky-800">Arrives At</td>
-      <th scope="col" class="p-2 border border-black text-sky-800">Departure Time</th>
-      <th scope="col" class="p-2 border border-black text-sky-800">Flight Duration</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="text-center">
-      <td class="border border-black"><%= @flight.departure_airport.airport_code %></td>
-      <td class="border border-black"><%= @flight.arrival_airport.airport_code %></td>
-      <td class="border border-black"><%= @flight.departure_date_formatted %></td>
-      <td class="border border-black"><%= @flight.format_duration %></td>
-    </tr>
-  </tbody>
-</table>
+<%= render "flight_info_table", flight: @flight %>
 
 <%= render "form", booking: @booking, flight: @flight %>
