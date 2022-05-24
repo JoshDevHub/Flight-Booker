@@ -11,7 +11,7 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <header class="bg-sky-600 border-b-2 border-sky-800">
+    <header class="bg-sky-600 border-b-2 border-sky-800 mb-4">
       <nav class="flex items-center divide-x-2 divide-sky-800">
         <span class="text-white mx-4">
           <%= svg "airplane-takeoff" %>
@@ -23,7 +23,7 @@
                             after:block after:w-0 after:h-0.5 after:bg-white
                             after:transition-all hover:after:w-full" %>
         <%= link_to "Find Booking",
-                    "bookings/search",
+                    bookings_path,
                     class: "text-white text-2xl p-4 hover:bg-sky-800
                             transition-all duration-200
                             after:block after:w-0 after:h-0.5 after:bg-white
