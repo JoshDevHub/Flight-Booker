@@ -1,0 +1,24 @@
+<h1 class="text-2xl font-bold mb-6">Enter a passenger email to find Booking</h1>
+
+<%= form_with url: bookings_path, method: :get do |form| %>
+  <div class="mb-10 flex gap-4 flex-col md:flex-row">
+    <%= form.label "Email", class: "hidden" %>
+    <%= form.email_field "passenger_email",
+                         placeholder: "example@email.com",
+                         class: "border border-black p-2 rounded-md" %>
+
+    <%= form.submit "Search", class: "btn-primary" %>
+  </div>
+<% end %>
+
+<% if @flight.present? %>
+  <h2 class="font-bold text-xl mb-2 text-amber-700">
+    Hello <%= @passenger_name %>!
+  </h2>
+  <p class="font-bold mb-1">You are booked for the following flight:</p>
+  <%= render "flight_info_table", flight: @flight %>
+<% elsif params[:passenger_email].present? %>
+  <p class="text-red-700 font-bold">
+    - No bookings were found for this email -
+  </p>
+<% end %>
