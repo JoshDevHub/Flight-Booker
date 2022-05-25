@@ -69,6 +69,26 @@ RSpec.describe Flight, type: :model do
     end
   end
 
+  describe "#departure_time_formatted" do
+    context "when the departure time is 11:15am" do
+      subject(:flight_1115am) { create(:flight, :departing_1115am) }
+
+      it "formats the time to %l:%M%P" do
+        formatted_time = flight_1115am.departure_time_formatted
+        expect(formatted_time).to eq("11:15am")
+      end
+    end
+
+    context "when the departure time is 3:45am" do
+      subject(:flight_345pm) { create(:flight, :departing_345pm) }
+
+      it "formats the time to %l:%M%P" do
+        formatted_time = flight_345pm.departure_time_formatted
+        expect(formatted_time).to eq(" 3:45pm")
+      end
+    end
+  end
+
   describe "#format_duration" do
     context "when the flight is 4 hours long" do
       subject(:flight_4h) { create(:flight, :four_hours_long) }

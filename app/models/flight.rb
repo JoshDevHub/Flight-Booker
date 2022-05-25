@@ -16,6 +16,10 @@ class Flight < ApplicationRecord
     departure_time.strftime("%m/%d/%Y")
   end
 
+  def departure_time_formatted
+    departure_time.strftime("%l:%M%P")
+  end
+
   def format_duration
     seconds = flight_duration
     format(
