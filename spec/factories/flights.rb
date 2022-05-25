@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :flight do
+    id { 1 }
     departure_time { "2022-05-10 14:51:46" }
     flight_duration { 3600 }
     departure_airport { create(:airport) }
