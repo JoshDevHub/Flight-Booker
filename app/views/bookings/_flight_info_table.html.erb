@@ -1,18 +1,35 @@
-<table class="border border-black mb-4">
-  <thead>
+<table class="border border-black mb-4 flex overflow-hidden sm:table">
+  <thead class="flex flex-shrink-0 sm:table-header-group">
     <tr>
-      <th scope="col" class="p-2 border border-black text-sky-800">Departs From</td>
-      <th scope="col" class="p-2 border border-black text-sky-800">Arrives At</td>
-      <th scope="col" class="p-2 border border-black text-sky-800">Departure Time</th>
-      <th scope="col" class="p-2 border border-black text-sky-800">Flight Duration</td>
+      <th scope="col" class="p-2 border border-black text-sky-800 block
+                            sm:table-cell">Departs From</td>
+      <th scope="col" class="p-2 border border-black text-sky-800 block
+                            sm:table-cell">Arrives At</td>
+      <th scope="col" class="p-2 border border-black text-sky-800 block
+                            sm:table-cell">Departure Date</th>
+      <th scope="col" class="p-2 border border-black text-sky-800 block
+                            sm:table-cell">Departure Time</th>
+      <th scope="col" class="p-2 border border-black text-sky-800 block
+                            sm:table-cell">Flight Duration</td>
     </tr>
   </thead>
-  <tbody>
-    <tr class="text-center">
-      <td class="border border-black"><%= flight.departure_airport.airport_code %></td>
-      <td class="border border-black"><%= flight.arrival_airport.airport_code %></td>
-      <td class="border border-black"><%= flight.departure_date_formatted %></td>
-      <td class="border border-black"><%= flight.format_duration %></td>
+  <tbody class="flex sm:table-row-group">
+    <tr class="text-center flex flex-col sm:table-row">
+      <td class="border border-black block p-2 sm:table-cell sm:p-1">
+        <%= flight.departure_airport.airport_code %>
+      </td>
+      <td class="border border-black block p-2 sm:table-cell sm:p-1">
+        <%= flight.arrival_airport.airport_code %>
+      </td>
+      <td class="border border-black block p-2 sm:table-cell sm:p-1">
+        <%= flight.departure_date_formatted %>
+      </td>
+      <td class="border border-black block p-2 sm:table-cell sm:p-1">
+        <%= flight.departure_time_formatted %>
+      </td>
+      <td class="border border-black block p-2 sm:table-cell sm:p-1">
+        <%= flight.format_duration %>
+      </td>
     </tr>
   </tbody>
 </table>
