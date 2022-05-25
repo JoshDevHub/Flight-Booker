@@ -68,10 +68,12 @@ group :development do
 end
 
 group :development, :test do
+  gem "capybara"
   gem "factory_bot_rails"
   gem "faker"
   gem "rspec-rails"
   gem "rubocop"
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  gem "webdrivers"
 end
