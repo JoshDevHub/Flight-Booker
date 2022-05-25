@@ -1,7 +1,20 @@
 <h1 class="text-3xl mb-4 mt-4 font-bold text-sky-600">Book Your Flight</h1>
 
-<h2 class="text-xl mb-2 font-bold">Flight Information</h2>
+<% if @booking.errors.any? %>
+    <div class="error">
+      <h2 class="text-xl mb-2 font-bold text-red-700">
+        Error(s) prohibited this flight from being booked.
+      </h2>
+    </div>
+    <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li class="text-center"><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
 
-<%= render "flight_info_table", flight: @flight %>
-
-<%= render "form", booking: @booking, flight: @flight %>
+<% if @flight.present? %>
+  <h2 class="text-xl mb-2 font-bold">Flight Information</h2>
+  <%= render "flight_info_table", flight: @flight %>
+  <%= render "form", booking: @booking, flight: @flight %>
+<% end %>
