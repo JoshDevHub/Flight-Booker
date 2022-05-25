@@ -1,0 +1,14 @@
+<h1 class="text-3xl mb-4 mt-4 font-bold text-sky-600">Booking</h1>
+
+<h2 class="text-xl mb-2 font-bold">Flight Info</h2>
+<%= render "flight_info_table", flight: @booking.flight %>
+
+<div>
+  <% @booking.passengers.each_with_index do |passenger, idx| %>
+    <h3 class="font-bold"><%= (idx + 1).ordinalize %> Passenger</h3>
+    <ul class="mb-2">
+      <%= passenger.first_name %>
+      <%= passenger.last_name %>
+    </ul>
+  <% end %>
+</div>
