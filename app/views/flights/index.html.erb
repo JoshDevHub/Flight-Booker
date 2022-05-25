@@ -7,4 +7,8 @@
 
 <% if @flights.any? %>
   <%= render "select_form", flights: @flights, passengers: @passengers %>
+<% elsif request.query_string.present? %>
+  <p class="text-red-700 font-bold">
+    - No flights match the given criteria -
+  </p>
 <% end %>

@@ -17,8 +17,10 @@
   </h2>
   <p class="font-bold mb-1">You are booked for the following flight:</p>
   <%= render "flight_info_table", flight: @flight %>
-<% elsif params[:passenger_email].present? %>
+
+<% elsif request.query_string.present? %>
   <p class="text-red-700 font-bold">
     - No bookings were found for this email -
   </p>
+
 <% end %>
