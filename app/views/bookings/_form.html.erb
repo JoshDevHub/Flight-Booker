@@ -1,7 +1,8 @@
 <%= form_with model: booking,
-              html: { class: "flex flex-col items-center" } do |form| %>
+              html: { class: "flex flex-col items-center lg:w-[40%]" } do |form| %>
   <%= form.hidden_field :flight_id, value: flight.id %>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+  <%# <div class="grid grid-cols-1 grid-flow-dense md:grid-cols-2 gap-x-8"> %>
+  <div class="flex md:flex-row flex-col md:flex-wrap gap-4 justify-center">
     <%= form.fields_for :passengers do |sub_form| %>
       <div class="flex flex-col gap-2">
         <h3 class="font-bold text-center">
