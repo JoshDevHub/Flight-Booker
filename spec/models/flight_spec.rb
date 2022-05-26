@@ -49,6 +49,21 @@ RSpec.describe Flight, type: :model do
     end
   end
 
+  describe "self::list_formatted_departure_dates" do
+    before do
+      create(:flight, :departing_may242022)
+      create(:flight, :departing_may132022)
+      create(:flight, :second_departing_may132022)
+      create(:flight, :departing_oct52023)
+    end
+
+    it "returns an array of unique dates in order" do
+      result_dates = described_class.list_formatted_departure_dates
+      expected_dates = %w[05/13/2022 05/24/2022 10/05/2023]
+      expect(result_dates).to eq(expected_dates)
+    end
+  end
+
   describe "#departure_date_formatted" do
     context "when the departure date is May 13, 2022" do
       subject(:may13_flight) { create(:flight, :departing_may132022) }

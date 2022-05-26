@@ -15,10 +15,22 @@ FactoryBot.define do
     end
 
     trait :departing_may132022 do
+      id { 1 }
       departure_time { "Fri, 13 May 2022 00:00:00.000000000 UTC +00:00" }
     end
 
+    trait :second_departing_may132022 do
+      id { 2 }
+      departure_time { "Fri, 13 May 2022 12:00:00.000000000 UTC +00:00" }
+    end
+
+    trait :departing_may242022 do
+      id { 3 }
+      departure_time { "Wed, 24 May 2022 00:00:00.000000000 UTC +00:00" }
+    end
+
     trait :departing_oct52023 do
+      id { 4 }
       departure_time { "Thu, 05 Oct 2023 00:00:00.000000000 UTC +00:00" }
     end
 
