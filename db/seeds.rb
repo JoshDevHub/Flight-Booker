@@ -17,17 +17,6 @@ def date_for(day)
                             period: :day)
 end
 
-# def create_flights_for(day)
-#   (1..(airports_list.size)).to_a.permutation(2).each do |(depart_id, arrive_id)|
-#     Flight.create!(
-#       flight_duration: rand(60..360),
-#       departure_time: date_for(day),
-#       arrival_airport_id: arrive_id,
-#       departure_airport_id: depart_id
-#     )
-#   end
-# end
-
 def create_flights_for(day)
   airports_list.permutation(2).each do |(departure, arrival)|
     Flight.create!(
