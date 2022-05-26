@@ -13,14 +13,8 @@
                     { class: "p-2 border border-transparent focus:border-black" } %>
 
     <%= form.label :departure_date, class: "hidden" %>
-    <%= select_tag "departure_time",
-                   options_from_collection_for_select(
-                     flight_dates,
-                     "departure_time",
-                     :departure_date_formatted
-                    ),
-                    prompt: "Select date",
-                    class: "p-2 border border-transparent focus:border-black" %>
+    <%= select(:departure_time, :date, flight_dates, { prompt: "Select Date" },
+               { class: "p-2 border border-transparent focus:border-black" }) %>
 
     <%= form.label :passengers, "Number of passengers:", class: "hidden" %>
     <%= form.select :passengers,
