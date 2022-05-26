@@ -3,37 +3,40 @@ require "faker"
 Airport.destroy_all
 Flight.destroy_all
 
-Airport.create!(
-  [
-    {
-      airport_code: "SFO"
-    },
-    {
-      airport_code: "LAX"
-    },
-    {
-      airport_code: "DEN"
-    },
-    {
-      airport_code: "ATL"
-    },
-    {
-      airport_code: "LGA"
-    }
-  ]
-)
-
-def random_airports
-  (1..5).to_a.shuffle.take(2)
+def airports_list
+  %w[ATL BOS DEN LAX LGA MIA MSP ORD SEA SFO]
 end
 
-(1..10).each do |id|
-  arrival_id, depart_id = random_airports
-  Flight.create!(
-    id: id,
-    flight_duration: rand(3600..18_000),
-    departure_time: Faker::Time.forward(days: 30, period: :day),
-    arrival_airport_id: arrival_id,
-    departure_airport_id: depart_id
-  )
+airports_list.each do |airport_code|
+  Airport.create!({ airport_code: airport_code })
 end
+
+def date_for(day)
+  Faker::Time.between_dates(from: Date.today + (day - 1),
+                            to: Date.today + day,
+                            period: :day)
+end
+
+# def create_flights_for(day)
+#   (1..(airports_list.size)).to_a.permutation(2).each do |(depart_id, arrive_id)|
+#     Flight.create!(
+#       flight_duration: rand(60..360),
+#       departure_time: date_for(day),
+#       arrival_airport_id: arrive_id,
+#       departure_airport_id: depart_id
+#     )
+#   end
+# end
+
+def create_flights_for(day)
+  airports_list.permutation(2).each do |(departure, arrival)|
+    Flight.create!(
+      flight_duration: rand(60..360),
+      departure_time: date_for(day),
+      departure_airport: Airport.find_by(airport_code: departure),
+      arrival_airport: Airport.find_by(airport_code: arrival)
+    )
+  end
+end
+
+(1..31).each { |day| create_flights_for(day) }
