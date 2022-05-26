@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :flight do
     id { 1 }
     departure_time { "2022-05-10 14:51:46" }
-    flight_duration { 3600 }
+    flight_duration { 60 }
     departure_airport { create(:airport) }
     arrival_airport { create(:airport) }
 
@@ -43,11 +43,11 @@ FactoryBot.define do
     end
 
     trait :four_hours_long do
-      flight_duration { 14_400 }
+      flight_duration { 240 }
     end
 
     trait :two_hours_eleven_min do
-      flight_duration { 7860 }
+      flight_duration { 131 }
     end
   end
 end

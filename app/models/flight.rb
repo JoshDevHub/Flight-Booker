@@ -25,12 +25,12 @@ class Flight < ApplicationRecord
   end
 
   def format_duration
-    seconds = flight_duration
+    minutes = flight_duration
     format(
       "%<hour>d:%<min>2.2d",
       {
-        hour: seconds / 3600,
-        min: seconds / 60 % 60
+        hour: minutes / 60,
+        min: minutes % 60
       }
     )
   end
