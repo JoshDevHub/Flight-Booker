@@ -30,6 +30,9 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem "factory_bot_rails"
+gem "faker"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -69,8 +72,8 @@ end
 
 group :development, :test do
   gem "capybara"
-  gem "factory_bot_rails"
-  gem "faker"
+  # gem "factory_bot_rails"
+  # gem "faker"
   gem "rspec-rails"
   gem "rubocop"
   gem "rubocop-rails", require: false
