@@ -44,7 +44,7 @@ In addition to testing, this was the first project where I used the [Tailwind](h
 I could do a number of things to increase the verisimilitude of the project:
 * Current flight durations are completely random, whereas I could seed the database in a way that maps the duration to how long it would actually take for a flight between the locations to occur in real life.
 * I could add more columns onto the existing models to reflect some other identifying information these entities would have in real life. A few that occur to me: Airports having a "city name", Flights having a "flight number", and Bookings having a "confirmation number".
-* Current flight dates will grow stale every ~30 days, as this is how far into the future I've built the database seeds to handle. Having this data work for long periods of time won't work on small, free databases, but I could work out some way to keep this data regularly updated while cleaning up data on past-flights.
+* Current flight dates will grow stale after 30 days, as this is how far into the future I've built the database seeds to handle. Having this data work for long periods of time won't work on small, free databases, but I could work out some way to keep this data regularly updated while cleaning up data on past-flights.
 * I could allow passengers to cancel or update their bookings.
 
 ## Special Thanks
