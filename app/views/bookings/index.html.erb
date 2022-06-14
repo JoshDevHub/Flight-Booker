@@ -11,12 +11,12 @@
   </div>
 <% end %>
 
-<% if @flight.present? %>
+<% if @passenger.present? %>
   <h2 class="font-bold text-xl mb-2 text-amber-700">
-    Hello <%= @passenger_name %>!
+    Hello <%= @passenger.first_name %>!
   </h2>
   <p class="font-bold mb-1">You are booked for the following flight:</p>
-  <%= render "flight_info_table", flight: @flight %>
+  <%= render "flight_info_table", flight: @passenger.booking.flight %>
 
 <% elsif request.query_string.present? %>
   <p class="text-red-700 font-bold">

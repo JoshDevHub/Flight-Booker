@@ -1,8 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    passenger = Passenger.find_by email: params[:passenger_email]
-    @passenger_name = passenger&.first_name
-    @flight = passenger&.booking&.flight
+    @passenger = Passenger.find_by email: params[:passenger_email]
   end
 
   def new
