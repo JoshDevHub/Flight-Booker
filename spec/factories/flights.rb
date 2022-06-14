@@ -14,6 +14,17 @@ FactoryBot.define do
       departure_airport { create(:airport, :atlanta) }
     end
 
+    trait :SFO_to_ATL do
+      departure_airport { create(:airport, :san_francisco) }
+      arrival_airport { create(:airport, :atlanta) }
+    end
+
+    trait :LGA_to_DEN do
+      id { 2 }
+      departure_airport { create(:airport, :la_guardia) }
+      arrival_airport { create(:airport, :denver) }
+    end
+
     trait :departing_may132022 do
       id { 1 }
       departure_time { "Fri, 13 May 2022 00:00:00.000000000 UTC +00:00" }
