@@ -4,9 +4,9 @@
   <div class="mb-10 flex gap-4 flex-col md:flex-row">
     <%= form.label "Email", class: "hidden" %>
     <%= form.email_field "passenger_email",
-                         placeholder: "example@email.com",
-                         class: "border border-black p-2 rounded-md" %>
-
+      placeholder: "example@email.com",
+      class: "border border-black p-2 rounded-md"
+    %>
     <%= form.submit "Search", class: "btn-primary" %>
   </div>
 <% end %>
@@ -17,10 +17,8 @@
   </h2>
   <p class="font-bold mb-1">You are booked for the following flight:</p>
   <%= render "flight_info_table", flight: @passenger.booking.flight %>
-
 <% elsif request.query_string.present? %>
   <p class="text-red-700 font-bold">
     - No bookings were found for this email -
   </p>
-
 <% end %>

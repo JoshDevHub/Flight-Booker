@@ -1,17 +1,18 @@
 <h2 class="text-xl font-bold mb-4">Matching Flights:</h2>
 
 <%= form_with url: new_booking_path,
-              method: :get,
-              html: { id: "flight_form" } do |form| %>
+  method: :get,
+  html: { id: "flight_form" } do |form|
+%>
 <% end %>
 
 <table class="border border-black mb-4">
   <thead>
     <tr>
-      <th scope="col" class="p-2 border border-black text-sky-800">Select Flight</td>
-      <th scope="col" class="p-2 border border-black text-sky-800">Departs From</td>
-      <th scope="col" class="p-2 border border-black text-sky-800">Arrives At</td>
-      <th scope="col" class="p-2 border border-black text-sky-800">Flight Duration</td>
+      <th scope="col" class="p-2 border border-black text-sky-800">Select Flight</th>
+      <th scope="col" class="p-2 border border-black text-sky-800">Departs From</th>
+      <th scope="col" class="p-2 border border-black text-sky-800">Arrives At</th>
+      <th scope="col" class="p-2 border border-black text-sky-800">Flight Duration</th>
     </tr>
   </thead>
   <tbody>
@@ -20,9 +21,10 @@
         <td class="border border-black">
           <%= radio_button("booking", "flight_id", "#{flight.id}", form: "flight_form") %>
           <%= hidden_field(:booking,
-                           :passenger_number,
-                           value: passengers,
-                           form: "flight_form") %>
+           :passenger_number,
+           value: passengers,
+           form: "flight_form")
+         %>
         </td>
         <td class="border border-black"><%= flight.departure_airport.airport_code %></td>
         <td class="border border-black"><%= flight.arrival_airport.airport_code %></td>
@@ -34,6 +36,7 @@
 
 <div>
   <%= submit_tag "Book this flight",
-                 form: "flight_form",
-                 class: "btn-primary" %>
+    form: "flight_form",
+    class: "btn-primary"
+  %>
 </div>

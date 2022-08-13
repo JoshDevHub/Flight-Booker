@@ -1,14 +1,15 @@
 <h1 class="text-3xl mb-4 mt-4 font-bold">Search Flights</h1>
 
 <%= render "search_form",
-            airport_codes: @airport_codes,
-            flight_dates: @flight_dates,
-            styles: "mb-8" %>
+  airport_codes: @airport_codes,
+  flight_dates: @flight_dates,
+  styles: "mb-8"
+%>
 
 <% if @flights.any? %>
   <%= render "select_form", flights: @flights, passengers: @passengers %>
 <% elsif request.query_string.present? %>
   <p class="text-red-700 font-bold">
-    - No flights match the given criteria -
+  - No flights match the given criteria -
   </p>
 <% end %>

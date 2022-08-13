@@ -2,29 +2,35 @@
   <div class="mb-6 flex gap-1 flex-col md:flex-row">
     <%= form.label :departure_airport, class: "hidden" %>
     <%= form.select :departure_airport,
-                    airport_codes,
-                    { prompt: "Select departure airport" },
-                    { class: "p-2 border border-transparent focus:border-black" } %>
+      airport_codes,
+      { prompt: "Select departure airport" },
+      { class: "p-2 border border-transparent focus:border-black" }
+    %>
 
     <%= form.label :arrival_airport, class: "hidden" %>
     <%= form.select :arrival_airport,
-                    airport_codes,
-                    { prompt: "Select destination" },
-                    { class: "p-2 border border-transparent focus:border-black" } %>
+      airport_codes,
+      { prompt: "Select destination" },
+      { class: "p-2 border border-transparent focus:border-black" }
+    %>
 
     <%= form.label :departure_date, class: "hidden" %>
-    <%= select(:departure_time, :date, flight_dates, { prompt: "Select Date" },
-               { class: "p-2 border border-transparent focus:border-black" }) %>
+    <%= select :departure_time,
+      :date,
+      flight_dates,
+      { prompt: "Select Date" },
+      { class: "p-2 border border-transparent focus: border-black" }
+    %>
 
     <%= form.label :passengers, "Number of passengers:", class: "hidden" %>
     <%= form.select :passengers,
-                    (1..4).map { [ "#{_1} passengers", _1 ]},
-                    { prompt: "Number of passengers" },
-                    { class: "p-2 border border-transparent focus:border-black" } %>
+      (1..4).map { [ "#{_1} passengers", _1 ]},
+      { prompt: "Number of passengers" },
+      { class: "p-2 border border-transparent focus:border-black" }
+    %>
   </div>
 
   <div class="flex justify-center">
-    <%= form.submit "Search",
-                    class: "btn-primary" %>
+    <%= form.submit "Search", class: "btn-primary" %>
   </div>
 <% end %>

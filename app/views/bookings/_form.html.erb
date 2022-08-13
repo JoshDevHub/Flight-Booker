@@ -1,5 +1,5 @@
 <%= form_with model: booking,
-              html: { class: "flex flex-col items-center lg:w-[40%]" } do |form| %>
+  html: { class: "flex flex-col items-center lg:w-[40%]" } do |form| %>
   <%= form.hidden_field :flight_id, value: flight.id %>
   <div class="flex md:flex-row flex-col md:flex-wrap gap-4 justify-center">
     <%= form.fields_for :passengers do |sub_form| %>
@@ -9,24 +9,30 @@
         </h3>
         <div class="flex flex-col">
           <%= sub_form.label :first_name,
-                             class: "text-sky-800 uppercase tracking-wider text-sm" %>
-          <%= sub_form.text_field :first_name,
-                                  required: true,
-                                  class: "border-2 border-black p-1" %>
+            class: "text-sky-800 uppercase tracking-wider text-sm"
+          %>
+        <%= sub_form.text_field :first_name,
+          required: true,
+          class: "border-2 border-black p-1"
+        %>
         </div>
         <div class="flex flex-col">
           <%= sub_form.label :last_name,
-                             class: "text-sky-800 uppercase tracking-wider text-sm" %>
-          <%= sub_form.text_field :last_name,
-                                  required: true,
-                                  class: "border-2 border-black p-1" %>
+            class: "text-sky-800 uppercase tracking-wider text-sm"
+          %>
+        <%= sub_form.text_field :last_name,
+          required: true,
+          class: "border-2 border-black p-1"
+        %>
         </div>
         <div class="flex flex-col mb-4">
           <%= sub_form.label :email,
-                             class: "text-sky-800 uppercase tracking-wider text-sm" %>
+            class: "text-sky-800 uppercase tracking-wider text-sm"
+          %>
           <%= sub_form.email_field :email,
-                                   required: true,
-                                   class: "border-2 border-black p-1" %>
+            required: true,
+            class: "border-2 border-black p-1"
+          %>
         </div>
       </div>
     <% end %>
