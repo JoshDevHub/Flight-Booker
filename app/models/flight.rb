@@ -16,6 +16,16 @@ class Flight < ApplicationRecord
     order(:departure_time).map(&:departure_date_formatted).uniq
   end
 
+  def self.search(params)
+    date = params.dig(:departure_time, :date)
+    return Flight.none if date.blank?
+
+    Flight
+      .departing_from(params[:departure_airport])
+      .arriving_at(params[:arrival_airport])
+      .where("DATE(departure_time) = ?", date)
+  end
+
   def departure_date_formatted
     departure_time.strftime("%m/%d/%Y")
   end

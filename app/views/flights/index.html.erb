@@ -6,7 +6,7 @@
   styles: "mb-8"
 %>
 
-<% if @flights.any? %>
+<% if @flights.exists? %>
   <%= render "select_form", flights: @flights, passengers: @passengers %>
 <% elsif request.query_string.present? %>
   <p class="text-red-700 font-bold">
