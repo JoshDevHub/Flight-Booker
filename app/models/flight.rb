@@ -18,10 +18,9 @@ class Flight < ApplicationRecord
 
   def self.search(params)
     date = params.dig(:departure_time, :date)
-    return Flight.none if date.blank?
+    return none if date.blank?
 
-    Flight
-      .departing_from(params[:departure_airport])
+    departing_from(params[:departure_airport])
       .arriving_at(params[:arrival_airport])
       .where("DATE(departure_time) = ?", date)
   end
