@@ -1,4 +1,4 @@
-<%= form_with url: root_path, method: :get, html: { class: styles } do |form| %>
+<%= form_with scope: :search, url: root_path, method: :get, html: { class: styles } do |form| %>
   <div class="mb-6 flex gap-1 flex-col md:flex-row">
     <%= form.label :departure_airport, class: "hidden" %>
     <%= form.select :departure_airport,
@@ -15,8 +15,8 @@
     %>
 
     <%= form.label :departure_date, class: "hidden" %>
-    <%= select :departure_time,
-      :date,
+    <%= select :search,
+      :departure_date,
       flight_dates,
       { prompt: "Select Date" },
       { class: "p-2 border border-transparent focus: border-black" }

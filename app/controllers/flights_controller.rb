@@ -4,6 +4,18 @@ class FlightsController < ApplicationController
     @flight_dates = Flight.list_formatted_departure_dates
     @passengers = params[:passengers]
 
-    @flights = Flight.search(params)
+    @flights = Flight.search(search_params)
+  end
+
+  private
+
+  def search_params
+    return {} unless params.key?(:search)
+
+    params[:search].slice(
+      :departure_airport,
+      :arrival_airport,
+      :departure_date
+    )
   end
 end
