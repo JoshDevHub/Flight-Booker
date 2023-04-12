@@ -30,16 +30,10 @@ RSpec.describe "Creating a booking", type: :system do
       fill_in "#{attr_prefix}[last_name]", with: "Smith"
       fill_in "#{attr_prefix}[email]", with: "josh@email.com"
 
-      # click_on "Book This Flight"
       empty_field = find(:field, "#{attr_prefix}[first_name]")
 
       click_on "Book This Flight"
       expect(find(:field, valid: false)).to eq empty_field
-      # field = find(:field, valid: false)
-      # p field
-      # expect("#{attr_prefix}[first_name]".valid).to be_false
-      # expect(page.all(:field, "#{attr_prefix}[first_name]").valid).to be_false
-      # expect(page).to have_content("first name can't be blank")
     end
   end
 end
