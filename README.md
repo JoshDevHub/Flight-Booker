@@ -6,7 +6,7 @@ This is a small website that mimics the flow of booking a one-way flight in the 
 
 ## Getting Started / How to Use
 
-You can visit the live site on [Heroku](https://cryptic-dawn-66962.herokuapp.com/). Note that because I'm on a free plan, the dyno hosting this site will regularly sleep. This can make the app slow to load on initial visits as the dyno may need to 'wake up'.
+The sunsetting of Heroku's free tier unfortunately killed the live site for this app. I'll try to get a prod environment up in the future but for now, you'll have to run this locally to use it.
 
 For running this app locally, you'll want to first have the following prerequisites:
 ```
@@ -18,9 +18,8 @@ PostgreSQL >= 12.9
 
 You can then clone this repo, `cd` into the project's root directory, and enter the following commands to get set up:
 ```sh
-bin/setup 
-bin/rails db:seed
-bin/dev
+bin/setup # installs dependencies and sets up database with seed data
+bin/dev   # starts dev server
 ```
 You can then visit http://localhost:3000/ in your browser to view the site locally.
 
