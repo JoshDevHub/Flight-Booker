@@ -6,7 +6,7 @@ This is a small website that mimics the flow of booking a one-way flight in the 
 
 ## Getting Started / How to Use
 
-The sunsetting of Heroku's free tier unfortunately killed the live site for this app. I'll try to get a prod environment up in the future but for now, you'll have to run this locally to use it.
+This app is deployed [here](https://odin-flight-booker.fly.dev/) using Fly.io.
 
 For running this app locally, you'll want to first have the following prerequisites:
 ```
