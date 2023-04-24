@@ -81,3 +81,5 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "webdrivers"
 end
+
+gem "dockerfile-rails", ">= 1.2", :group => :development
